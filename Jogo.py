@@ -4,6 +4,8 @@ from PIL import Image
 import math
 import numpy as np
 import copy
+from classes.objeto import Objeto
+from classes.jogador import Jogador
 
 import imports
 
@@ -31,15 +33,6 @@ pix_val = list(imports.im.getdata())
 pix = imports.im.load() 
 mapa_com_personagens = np.empty((shap, shap), dtype=object)
 
-class Objeto:
-    def __init__(self, bonus_distancia, bonus_defesa, tipo_bloco, tipo_personagem, ativo_inativo, vida):
-        self.bonus_distancia = bonus_distancia
-        self.bonus_defesa = bonus_defesa
-        self.tipo_bloco = tipo_bloco
-        self.tipo_personagem = tipo_personagem
-        self.ativo_inativo = ativo_inativo
-        self.vida = vida
-
 mar_fundo          = Objeto(-2,-2,  7, 0, -10, -10)
 mar_raso           = Objeto(-1,-1,  1, 0, -10, -10)
 areia              = Objeto( 0, 0,  2, 0, -10, -10)
@@ -65,11 +58,6 @@ arqueiro_vermelho  = Objeto(-10,-10,-10, 22,  1,  10)
 
 mago_azul          = Objeto(-10,-10,-10, 31,  1,  10)
 mago_vermelho      = Objeto(-10,-10,-10, 32,  1,  10)
-
-class Jogador:
-    def __init__(self, time, gold):
-        self.time = time
-        self.gold = gold
 
 jogador_azul = Jogador("azul",900)
 jogador_vermelho = Jogador("vermelho",900)
